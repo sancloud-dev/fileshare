@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 #Fetch aws  credintials from config.json
 import json
 # with open(file='.\config.json', mode='r') as config_file: 

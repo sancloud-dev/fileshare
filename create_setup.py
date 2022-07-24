@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import boto3
 # Get the service resource.
 import config as keys
