@@ -129,6 +129,5 @@ def upload():
     return render_template("home.html",msg =msg) 
         
 if __name__ == "__main__":
-    
-    app.run(debug=True)
+    app.run(host='0.0.0.0', debug=True, port=5000)
 
