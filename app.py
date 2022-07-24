@@ -7,16 +7,9 @@ from werkzeug.utils import secure_filename
 app = Flask(__name__)
 
 
-dynamodb = boto3.resource('dynamodb',
-                    aws_access_key_id=keys.ACCESS_KEY_ID,
-                    aws_secret_access_key=keys.ACCESS_SECRET_KEY,
-                    aws_session_token=keys.AWS_SESSION_TOKEN)
+dynamodb = boto3.resource('dynamodb')
 
-s3 = boto3.client('s3',
-                    aws_access_key_id=keys.ACCESS_KEY_ID,
-                    aws_secret_access_key=keys.ACCESS_SECRET_KEY,
-                    aws_session_token=keys.AWS_SESSION_TOKEN
-                      )
+s3 = boto3.client('s3'  )
 # s3 = boto3.client('s3')
 BUCKET_NAME=keys.BUCKET_NAME
 
@@ -103,12 +96,8 @@ def upload():
                     ExpiresIn=3600,
                     HttpMethod='GET'
                 )
-                session = boto3.Session(
-                    aws_access_key_id=keys.ACCESS_KEY_ID,
-                    aws_secret_access_key=keys.ACCESS_SECRET_KEY,
-                    aws_session_token=keys.AWS_SESSION_TOKEN
-                )
-                client = session.client('ses')
+
+                client = boto3.client('ses')
                 response = client.send_email(
                     Destination={
                         'ToAddresses': [email]
